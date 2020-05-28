@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '13.0'
   
-  s.info_plist = { 'NSPrincipalClass' => 'BrightcovePlugin' }
+  s.info_plist = { 'NSPrincipalClass' => '${POD_PLUGIN_NAME}' }
 
   s.source_files = '${POD_NAME}/Classes/**/*'
   
