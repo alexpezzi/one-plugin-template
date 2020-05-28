@@ -114,7 +114,7 @@ module Pod
     def rename_template_files
       FileUtils.mv "POD_README.md", "README.md"
       FileUtils.mv "POD_LICENSE", "LICENSE"
-      FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "NAME.podspec", "#{pod_plugin_name}.podspec"
       FileUtils.mv "Pod/Classes/POD_Plugin.swift", "Pod/Classes/#{pod_plugin_name}.swift"
     end
 
