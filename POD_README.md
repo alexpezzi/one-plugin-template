@@ -17,9 +17,23 @@
 ## Dependencies
 <Framework Dependencies>
 
-## How to use
+## Feature Spec
 
-<Code snippet>
+```json
+{
+  "features": {
+    "<featureName>": [
+      {
+        "enabled": true, 
+        "key": "<featureKey>", 
+        "properties": {
+          "<key>": "<value>", 
+        }
+      }
+    ]
+  }
+}
+```
 
 ## Author
 
