@@ -4,12 +4,12 @@ require 'colored2'
 module Pod
   class TemplateConfigurator
 
-    attr_reader :pod_name, :pod_name_lowercase, :pod_plugin_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
+    attr_reader :pod_name, :pod_plugin_name, :pod_plugin_identifier, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
 
     def initialize(pod_name)
       @pod_name = pod_name
-      @pod_name_lowercase = pod_name.downcase
       @pod_plugin_name = pod_name + 'Plugin'
+      @pod_plugin_identifier = 'tv.accedo.one.plugin.' + pod_name.downcase
       @pods_for_podfile = []
       @prefixes = []
       @message_bank = MessageBank.new(self)
@@ -92,12 +92,12 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['POD_LICENSE', 'POD_README.md', 'NAME.podspec', 'Pod/Classes/POD_Plugin.swift']
+      file_names = ['POD_README.md', 'NAME.podspec', 'Pod/Classes/POD_Plugin.swift']
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
-        text.gsub!("${POD_NAME_LOWERCASE}", @pod_name_lowercase)
         text.gsub!("${POD_PLUGIN_NAME}", @pod_plugin_name)
+        text.gsub!("${POD_PLUGIN_IDENTIFIER}", @pod_plugin_identifier)
         text.gsub!("${REPO_NAME}", @pod_name.gsub('+', '-'))
         text.gsub!("${USER_NAME}", user_name)
         text.gsub!("${USER_EMAIL}", user_email)
@@ -113,7 +113,6 @@ module Pod
 
     def rename_template_files
       FileUtils.mv "POD_README.md", "README.md"
-      FileUtils.mv "POD_LICENSE", "LICENSE"
       FileUtils.mv "NAME.podspec", "#{pod_plugin_name}.podspec"
       FileUtils.mv "Pod/Classes/POD_Plugin.swift", "Pod/Classes/#{pod_plugin_name}.swift"
     end
