@@ -14,8 +14,8 @@ Pod::Spec.new do |s|
 
   s.source_files = '${POD_NAME}/Classes/**/*'
   
-  # s.frameworks = 'Foundation'
+  s.frameworks = 'Foundation'
   
-	s.dependency 'OneCore'
+  s.dependency 'OneCore'
   
 end
