@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   
   s.info_plist = { 'NSPrincipalClass' => 'BrightcovePlugin' }
 
-  s.source_files = '${POD_PLUGIN_NAME}/Classes/**/*'
+  s.source_files = '${POD_NAME}/Classes/**/*'
   
   # s.frameworks = 'Foundation'
   
