@@ -8,7 +8,7 @@ module Pod
 
     def initialize(pod_name)
       @pod_name = pod_name
-      @pod_plugin_name = pod_name + 'Plugin'
+      @pod_plugin_name = 'One' + pod_name + 'Plugin'
       @pod_plugin_identifier = 'tv.accedo.one.plugin.' + pod_name.downcase
       @pods_for_podfile = []
       @prefixes = []
@@ -77,7 +77,6 @@ module Pod
       replace_variables_in_files
       clean_template_files
       rename_template_files
-      rename_classes_folder
 
       @message_bank.farewell_message
     end
@@ -92,7 +91,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['POD_README.md', 'NAME.podspec', 'Pod/Classes/POD_Plugin.swift']
+      file_names = ['POD_README.md', 'NAME.podspec', 'Classes/POD_Plugin.swift']
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -114,11 +113,7 @@ module Pod
     def rename_template_files
       FileUtils.mv "POD_README.md", "README.md"
       FileUtils.mv "NAME.podspec", "#{pod_plugin_name}.podspec"
-      FileUtils.mv "Pod/Classes/POD_Plugin.swift", "Pod/Classes/#{pod_plugin_name}.swift"
-    end
-
-    def rename_classes_folder
-      FileUtils.mv "Pod", @pod_name
+      FileUtils.mv "Classes/POD_Plugin.swift", "Classes/#{pod_plugin_name}.swift"
     end
 
     def validate_user_details
