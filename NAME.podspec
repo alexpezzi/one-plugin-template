@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   
   s.info_plist = { 'NSPrincipalClass' => '${POD_PLUGIN_NAME}' }
 
-  s.source_files = '${POD_NAME}/Classes/**/*'
+  s.source_files = 'Classes/**/*'
   
   s.frameworks = 'Foundation'
   
