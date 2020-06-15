@@ -1,4 +1,4 @@
-# AccedoOne - ${POD_PLUGIN_NAME}
+# ${POD_PLUGIN_NAME}
 
 `${POD_PLUGIN_IDENTIFIER}`
 
