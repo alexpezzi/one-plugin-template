@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/Accedo-Products/one-client-apple.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
+  s.tvos.deployment_target = '13.0'
   
   s.info_plist = { 'NSPrincipalClass' => '${POD_PLUGIN_NAME}' }
 
